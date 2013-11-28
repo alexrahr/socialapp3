@@ -10,6 +10,8 @@ module Socialapp3
   class Application < Rails::Application
 
     config.generators do |g|
+        g.stylesheets false
+        g.javascripts false
       
       
     end

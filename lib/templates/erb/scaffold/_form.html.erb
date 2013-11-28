@@ -1,13 +1,16 @@
 <%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
   <%%= f.error_notification %>
 
-  <div class="form-inputs">
-  <%- attributes.each do |attribute| -%>
-    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
-  <%- end -%>
-  </div>
+<%- attributes.each do |attribute| -%>
+  <div class="form-group">
+ <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, input_html: { class: 'form-control'}  %>
 
-  <div class="form-actions">
+  
+    </div>
+  <%- end -%>
+  
+
+
     <%%= f.button :submit %>
-  </div>
+
 <%% end %>

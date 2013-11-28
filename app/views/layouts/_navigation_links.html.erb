@@ -1,5 +1,8 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
+ <% if current_user.user_profile %>
+ <li><%= link_to 'My profile', user_profile_path(current_user.user_profile) %></li>
+ <% end %>
   <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>
   <li><%= link_to 'Login', new_user_session_path %></li>
@@ -9,6 +12,8 @@
 <% else %>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 <% end %>
+
+
 <% if user_signed_in? %>
   <% if current_user.has_role? :admin %>
     <li><%= link_to 'Admin', users_path %></li>
